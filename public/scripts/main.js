@@ -2,6 +2,8 @@ require.config({
     paths: {
         'angular': '../angular/angular.min',
         'ui.router': '../angular-ui-router/release/angular-ui-router.min',
+        'pace': '../PACE/pace.min',
+        'core': 'core',
         'app': 'app/MainApp',
         'appConfig': 'app/Config',
         'appFilters': 'app/Filters',
@@ -16,12 +18,14 @@ require.config({
             deps: ['app']
         },
         appConfig: {
-            deps: ['app']
-        }
+            deps: ['app', 'core']
+        },
     }
 });
 
-require(['app', 'appFilters', 'appConfig'], function () {
+require(['pace', 'appConfig'], function () {
     "use strict";
-    angular.bootstrap(document, ['app']);
+    setTimeout(function () {
+        angular.bootstrap(document, ['app']);
+    }, 0);
 });

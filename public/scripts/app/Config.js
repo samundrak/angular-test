@@ -1,19 +1,14 @@
-define(function () {
+define(['core'], function (core) {
     "use strict";
     angular.module('app')
         .config(function ($stateProvider, $urlRouterProvider) {
             'use strict';
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/welcome');
             $stateProvider.state('home', {
-                    url: '/',
-                    templateUrl: '/views/app/partials/dashboard',
-                    controller: 'dashboardCtrl'
-                })
-                .state('settings', {
-                    url: '/settings',
-                    templateUrl: '/views/app/partials/settings',
-                    controller: 'settingsCtrl'
-                });
+                url: '/:page',
+                templateUrl: core.templateUrlProvider,
+                controllerProvider: core.controllerProvider
+            });
         });
 
 });

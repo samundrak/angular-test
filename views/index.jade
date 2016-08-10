@@ -1,15 +1,9 @@
 extends layout
 
 block content
-  div.content
-    .row(data-ng-controller="homeController")
-      p {{ name }}
-  include header
-
-  div.content
-    .row
-      .col-md-2
-        include leftbar
-
-      .col-md-10
-        ui-view
+  .content
+    include header
+    .container
+      .content
+        .row.jumbotron
+          ui-view
