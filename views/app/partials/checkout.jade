@@ -1,2 +1,16 @@
-p this is checkout
+.row
+    .col-md-12
+        form
+            .div
+                label Your Full Name
+                input.form-control(ng-model="checkout.full_name" placeholder="Your Name..")
+            br
+            .div
+                label Your Contact
+                input.form-control(mobile-contact-parser contact="checkout.contact" ng-model="checkout.contact" placeholder="Your Name..")
+            br
+            .div
+                label Load your Account
+                input.form-control(currency-parser amount="checkout.amount" type="text" ng-model="checkout.amount" placeholder="Enter amount to load..")
+
 .btn.btn-primary(ui-sref="home({page:'books',more:''})") Back

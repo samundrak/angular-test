@@ -1,4 +1,47 @@
-p this is books template
-div(ng-if="moreDetails" ui-view="more")
-.btn.btn-primary(ui-sref="home({page:'welcome',more:''})") Back
-.btn.btn-primary(ui-sref="home({page:'checkout',more:''})") Checkout
+h2 Welcome {{ auth.user() }},
+h4 Please Select a Book you want to purchase
+.row
+    .col-md-6
+        div
+            |   Apply Filter
+            .row
+                .col-md-6
+                    input.form-control(ng-model="bookFilter.name" placeholder="Filter by book name")
+                .col-md-6
+                    input.form-control(type="number" ng-model="bookFilter.price" placeholder="Filter by book's price")
+        div
+            br
+            div(ng-if="!booksLists.length") No Book Found
+            div(ng-repeat="book in booksLists | filter:bookFilter track by $index  " )
+                div.alert.alert-info
+                    div.
+                    | Book Name : {{ book.name}}
+                    br
+                    | Book Pricce : {{ book.price }}
+                    br
+                    button(ng-click="bookSelected(book, $index)").btn.btn-primary
+                        | Add To Cart
+                    button(ng-click="moreDetails(book)").btn.btn-primary
+                        | More Details
+    .col-md-6
+        .row(ng-if="moreInfo")
+            .col-md-12
+                h2 Book's Details
+                p {{ moreDetails }}
+                div(ui-view="more" ng-if='moreDetails')
+        .row
+            .col-md-12
+                h2 Your Cart
+                    span(ng-if="selectedItems.length")
+                        |  Total ({{selectedItems.length}})
+                        | ${{ sum(selectedItems) || 0 }}
+                div(ng-if="!selectedItems.length") No Book selected
+                div(ng-repeat="item in selectedItems track by $index ")
+                    div Book : {{ item.name }}
+                    div Price : {{ item.price }}
+                    .btn.btn-danger(ng-click="removeSelectedBook($index, item)") Remove
+        .row
+            .col-md-4
+            .col-md-6
+                .btn.btn-primary(ui-sref="home({page:'welcome',more:''})") Back
+                .btn.btn-primary(ui-sref="home({page:'checkout',more:''})") Checkout

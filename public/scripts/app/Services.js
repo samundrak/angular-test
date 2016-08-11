@@ -3,7 +3,10 @@ define(['core'], function (core) {
     angular.module('app')
         .factory('DB', function () {
             "use strict";
-            var data = {};
+            var data = {
+
+                books: core.fakeBooksDetails
+            };
             return {
                 data: data,
                 get: function (key, defaultValue) {
@@ -13,6 +16,13 @@ define(['core'], function (core) {
                     return data[key] = value;
                 }
             }
-        });
-
+        })
+        .factory('Auth', ['DB', function (DB) {
+            "use strict";
+            return {
+                user: function () {
+                    return true;//DB.get('name') || false;
+                }
+            }
+        }]);
 });
