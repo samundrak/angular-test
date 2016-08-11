@@ -1,1 +1,6 @@
-.btn.btn-primary(ui-sref="home({page:'books'})") Select Books
+.row
+    h4 Welcome, please enter your name
+    form(ng-submit="gotoBooksPage()")
+        input.form-control(ng-model='name' type="text")
+        br
+        input.btn.btn-primary(type="submit" value="Select Books")

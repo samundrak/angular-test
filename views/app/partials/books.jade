@@ -1,3 +1,4 @@
 p this is books template
-.btn.btn-primary(ui-sref="home({page:'welcome'})") Back
-.btn.btn-primary(ui-sref="home({page:'checkout'})") Checkout
+div(ng-if="moreDetails" ui-view="more")
+.btn.btn-primary(ui-sref="home({page:'welcome',more:''})") Back
+.btn.btn-primary(ui-sref="home({page:'checkout',more:''})") Checkout

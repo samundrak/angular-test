@@ -1,29 +1,29 @@
 require.config({
     paths: {
+        'core': 'core',
         'angular': '../angular/angular.min',
         'ui.router': '../angular-ui-router/release/angular-ui-router.min',
         'pace': '../PACE/pace.min',
-        'core': 'core',
         'app': 'app/MainApp',
+        'appServices': 'app/Services',
         'appConfig': 'app/Config',
         'appFilters': 'app/Filters',
-        'appServices': 'app/Services',
         'appDirectives': 'app/Directives',
     },
     shim: {
         app: {
-            deps: ['angular', 'ui.router']
-        },
-        appFilters: {
-            deps: ['app']
+            deps: ['angular', 'core', 'ui.router']
         },
         appConfig: {
             deps: ['app', 'core']
         },
+        appServices: {
+            deps: ['app']
+        }
     }
 });
 
-require(['pace', 'appConfig'], function () {
+require(['app', 'appConfig', 'appServices'], function () {
     "use strict";
     setTimeout(function () {
         angular.bootstrap(document, ['app']);
