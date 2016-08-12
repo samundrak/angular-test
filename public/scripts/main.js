@@ -1,10 +1,10 @@
 require.config({
     paths: {
+        'domReady': '../requirejs-domready/domReady',
         'core': 'core',
         'angular': '../angular/angular.min',
-        'ui.router': '../angular-ui-router/release/angular-ui-router.min',
+        'uiRouter': '../angular-ui-router/release/angular-ui-router.min',
         'ngAnimate': '../angular-animate/angular-animate.min',
-        'pace': '../PACE/pace.min',
         'app': 'app/MainApp',
         'appServices': 'app/Services',
         'appConfig': 'app/Config',
@@ -12,8 +12,17 @@ require.config({
         'appDirectives': 'app/Directives',
     },
     shim: {
+        'angular': {
+            exports: 'angular'
+        },
+        'uiRouter': {
+            deps: ['angular']
+        },
+         'ngAnimate': {
+            deps: ['angular']
+        },
         app: {
-            deps: ['angular', 'core', 'ui.router','ngAnimate']
+            deps: ['angular', 'core', 'uiRouter', 'ngAnimate']
         },
         appConfig: {
             deps: ['app', 'core']
@@ -27,9 +36,9 @@ require.config({
     }
 });
 
-require(['app', 'appConfig', 'appServices', 'appDirectives'], function () {
+require(['app', 'appConfig', 'appServices', 'appDirectives'], function() {
     "use strict";
-    setTimeout(function () {
+    setTimeout(function() {
         angular.bootstrap(document, ['app']);
     }, 0);
 });

@@ -10,6 +10,7 @@ define(['core'], function (core) {
                 },
                 controller: ['$scope', function ($scope) {
                     $scope.$watch('contact', function (newVal, oldVal) {
+                        if(!newVal) return;
                         var lastChar = newVal.charAt(newVal.length - 1);
                         if (lastChar != ')' && lastChar != '(' && lastChar != '-') {
                             if (isNaN(+lastChar)) {
@@ -39,7 +40,7 @@ define(['core'], function (core) {
                 }, controller: ['$scope', function ($scope) {
 
                     $scope.$watch('amount', function (newVal, oldVal) {
-
+                             if(!newVal) return;
                         var number = +newVal.replace(/[^\d.]/g, '')
                         number = isNaN(number) ? 0 : parseFloat(number.toFixed(2))
                         $scope.amount = '$' + Number(parseFloat(number).toFixed(1)).toLocaleString();

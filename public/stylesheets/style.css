@@ -5,9 +5,7 @@ body {
 .jumbotron {
   min-height :  700px;
 }
-
-/* Have to set height explicity on ui-view
-to prevent collapsing during animation*/
+ 
 .ui-view-container {
     position: relative;
     height: 65px;

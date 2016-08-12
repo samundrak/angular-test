@@ -20,12 +20,10 @@
   ],
   "dependencies": {
     "angular-ui-router": "ui-router#^0.2.18",
-    "toastr": "^2.1.2",
-    "underscore": "^1.8.3",
     "angular": "^1.5.5",
     "bootstrap": "^3.3.6",
-    "angular-moment": "^0.10.3",
     "requirejs": "^2.2.0",
+    "domReady": "requirejs-domready#^2.0.1",
     "angular-animate": "^1.5.8"
   }
 }

@@ -1,9 +1,6 @@
 .row
     .col-md-12
         form
-            .div
-                label Your Full Name
-                input.form-control(ng-model="checkout.full_name" placeholder="Your Name..")
             br
             .div
                 label Your Contact
@@ -12,5 +9,24 @@
             .div
                 label Load your Account
                 input.form-control(currency-parser amount="checkout.amount" type="text" ng-model="checkout.amount" placeholder="Enter amount to load..")
-
-.btn.btn-primary(ui-sref="home({page:'books',more:''})") Back
+            br
+            .div 
+                label Enter Full Name
+                .row
+                    .col-md-4(ng-repeat="name in checkout.fullname track by $index")
+                        input(id="fullname_{{$index}}" ng-change="restrictCharLength($index, fullname[$index])" type="text" ng-model="fullname[$index].value" placeholder="{{name.placeholder}}").form-control
+            br
+            div
+                label Do Some Sum
+                .row
+                    .col-md-3(ng-repeat="amount in checkout.amounts track by $index")
+                        label Amount {{ $index + 1}}
+                        input(ng-model="amount").form-control
+                    .col-md-3
+                        label Sum
+                        input(ng-model="sum").form-control
+.row
+    .col-md-4
+    .col-md-4
+        br
+        .btn.btn-primary(ui-sref="home({page:'books',more:''})") Back
