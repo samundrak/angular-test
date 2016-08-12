@@ -36,10 +36,9 @@ h4 Please Select a Book you want to purchase
                         |  Total ({{selectedItems.length}})
                         | ${{ sum(selectedItems) || 0 }}
                 div(ng-if="!selectedItems.length") No Book selected
-                div(ng-repeat="item in selectedItems track by $index ")
+                div(ng-repeat="item in selectedItems track by $index ").alert.alert-success
                     div Book : {{ item.name }}
                     div Price : {{ item.price }}
-                    .btn.btn-danger(ng-click="removeSelectedBook($index, item)") Remove
         .row
             .col-md-4
             .col-md-6

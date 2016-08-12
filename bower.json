@@ -24,6 +24,7 @@
     "bootstrap": "^3.3.6",
     "requirejs": "^2.2.0",
     "domReady": "requirejs-domready#^2.0.1",
-    "angular-animate": "^1.5.8"
+    "angular-animate": "^1.5.8",
+    "PACE": "pace#^1.0.2"
   }
 }

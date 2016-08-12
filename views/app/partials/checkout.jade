@@ -10,7 +10,7 @@
                 label Load your Account
                 input.form-control(currency-parser amount="checkout.amount" type="text" ng-model="checkout.amount" placeholder="Enter amount to load..")
             br
-            .div 
+            .div
                 label Enter Full Name
                 .row
                     .col-md-4(ng-repeat="name in checkout.fullname track by $index")
@@ -21,12 +21,13 @@
                 .row
                     .col-md-3(ng-repeat="amount in checkout.amounts track by $index")
                         label Amount {{ $index + 1}}
-                        input(ng-model="amount").form-control
+                        input(ng-model="checkout.amounts[$index]" ng-change="amountChanged($index)").form-control
                     .col-md-3
                         label Sum
-                        input(ng-model="sum").form-control
+                        input( ng-change="sumHasAltered()" ng-model="checkout.sum" ).form-control
 .row
     .col-md-4
     .col-md-4
         br
         .btn.btn-primary(ui-sref="home({page:'books',more:''})") Back
+        .btn.btn-primary(ui-sref="home({page:'finish',more:''})") Proceed
